@@ -1,0 +1,428 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Kanit', sans-serif;
+  }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.toast-popup {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.modal-pop {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.btn-scale {
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-scale:active {
+  transform: scale(0.95);
+}
+
+/* Boss Alive Breathing Combat Animations */
+@keyframes bossBreathingNormal {
+  0% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 4px 6px rgba(225, 29, 72, 0.2));
+  }
+  50% {
+    transform: scale(1.055, 1.04) translateY(-3px);
+    filter: drop-shadow(0 8px 16px rgba(225, 29, 72, 0.45));
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 4px 6px rgba(225, 29, 72, 0.2));
+  }
+}
+
+@keyframes bossBreathingRapid {
+  0% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 3px 8px rgba(239, 68, 68, 0.4));
+  }
+  35% {
+    transform: scale(1.1, 1.07) translateY(-4px);
+    filter: drop-shadow(0 10px 22px rgba(239, 68, 68, 0.8));
+  }
+  65% {
+    transform: scale(0.97, 0.97) translateY(1px);
+    filter: drop-shadow(0 2px 6px rgba(239, 68, 68, 0.35));
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 3px 8px rgba(239, 68, 68, 0.4));
+  }
+}
+
+.boss-breathing-normal {
+  animation: bossBreathingNormal 2.8s infinite ease-in-out;
+  transform-origin: center bottom;
+  will-change: transform, filter;
+}
+
+.boss-breathing-rapid {
+  animation: bossBreathingRapid 0.85s infinite ease-in-out;
+  transform-origin: center bottom;
+  will-change: transform, filter;
+}
+
+/* Boss Rage Mode - Glowing Red Pulsing Border */
+@keyframes bossRageBorderPulse {
+  0%, 100% {
+    border-color: rgba(239, 68, 68, 0.7);
+    box-shadow: 
+      0 0 0 2px rgba(239, 68, 68, 0.4),
+      0 0 16px rgba(239, 68, 68, 0.45),
+      0 10px 25px -5px rgba(225, 29, 72, 0.3),
+      inset 0 0 12px rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    border-color: rgba(255, 50, 50, 1);
+    box-shadow: 
+      0 0 0 3px rgba(255, 30, 30, 0.8),
+      0 0 28px rgba(239, 68, 68, 0.85),
+      0 0 45px rgba(220, 38, 38, 0.5),
+      0 12px 30px -4px rgba(225, 29, 72, 0.45),
+      inset 0 0 22px rgba(239, 68, 68, 0.35);
+  }
+}
+
+.boss-rage-mode {
+  border-color: #EF4444 !important;
+  animation: bossRageBorderPulse 1.25s infinite ease-in-out !important;
+}
+
+/* Combo Multiplier Intensity Keyframes & Styles */
+@keyframes comboGlowTier2 {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 4px 14px rgba(249, 115, 22, 0.65);
+  }
+}
+
+@keyframes comboGlowTier3 {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5), 0 0 16px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.8), 0 0 26px rgba(168, 85, 247, 0.65);
+  }
+}
+
+@keyframes comboGlowTier4 {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.75), 0 0 24px rgba(225, 29, 72, 0.6);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 24px rgba(251, 191, 36, 0.95), 0 0 38px rgba(225, 29, 72, 0.85);
+  }
+}
+
+.combo-badge-tier1 {
+  transition: all 0.25s ease;
+}
+
+.combo-badge-tier2 {
+  animation: comboGlowTier2 1.8s infinite ease-in-out;
+}
+
+.combo-badge-tier3 {
+  animation: comboGlowTier3 1.2s infinite ease-in-out;
+}
+
+.combo-badge-tier4 {
+  animation: comboGlowTier4 0.9s infinite ease-in-out;
+}
+
+/* Boss Level Up & Evolution Animations */
+@keyframes bossEvolutionPulseRing {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.95;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.8), inset 0 0 10px rgba(239, 68, 68, 0.6);
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+    box-shadow: 0 0 35px rgba(251, 191, 36, 0), inset 0 0 20px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes bossEvolutionAuraSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.25);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes bossEvolutionAvatarMorph {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  20% {
+    transform: scale(0.8) rotate(-8deg);
+    filter: brightness(1.7) drop-shadow(0 0 18px rgba(251, 191, 36, 0.9));
+  }
+  45% {
+    transform: scale(1.4) rotate(8deg);
+    filter: brightness(2.6) drop-shadow(0 0 35px rgba(239, 68, 68, 1));
+  }
+  70% {
+    transform: scale(1.15) rotate(-3deg);
+    filter: brightness(1.4) drop-shadow(0 0 22px rgba(168, 85, 247, 0.85));
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+@keyframes bossEvolutionBannerPop {
+  0% {
+    transform: scale(0.7) translateY(12px);
+    opacity: 0;
+  }
+  18% {
+    transform: scale(1.06) translateY(-3px);
+    opacity: 1;
+  }
+  28% {
+    transform: scale(0.98) translateY(0);
+    opacity: 1;
+  }
+  85% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.94) translateY(-8px);
+    opacity: 0;
+  }
+}
+
+@keyframes xpBarShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes xpGainFloatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.85);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.05);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.9);
+  }
+}
+
+.boss-evolution-ring-1 {
+  animation: bossEvolutionPulseRing 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.boss-evolution-ring-2 {
+  animation: bossEvolutionPulseRing 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s infinite;
+}
+
+.boss-evolution-aura {
+  animation: bossEvolutionAuraSpin 4s linear infinite;
+}
+
+.boss-evolution-avatar-morph {
+  animation: bossEvolutionAvatarMorph 2.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.boss-evolution-banner {
+  animation: bossEvolutionBannerPop 3.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.boss-xp-shimmer {
+  animation: xpBarShimmer 2.2s infinite ease-in-out;
+}
+
+.boss-xp-gain-bubble {
+  animation: xpGainFloatUp 2s ease-out forwards;
+}
+
+/* 3D Chamfered Cut Edge & Bevel Styles */
+.bevel-cut-3d {
+  position: relative;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.15);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
+}
+
+.icon-badge-3d {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.icon-badge-3d:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.icon-badge-3d:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+/* ========================================================
+   SCREEN SHAKE & GAME FEEL ANIMATIONS
+   ======================================================== */
+
+@keyframes shakeBoss {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-8px, -6px) rotate(-1.5deg); }
+  20% { transform: translate(8px, 6px) rotate(1.5deg); }
+  30% { transform: translate(-7px, 5px) rotate(-1deg); }
+  40% { transform: translate(7px, -4px) rotate(1deg); }
+  50% { transform: translate(-5px, 3px) rotate(-0.5deg); }
+  60% { transform: translate(4px, -3px) rotate(0.5deg); }
+  70% { transform: translate(-3px, 2px) rotate(-0.3deg); }
+  80% { transform: translate(2px, -1px) rotate(0.2deg); }
+  90% { transform: translate(-1px, 1px) rotate(-0.1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes shakeQuest {
+  0% { transform: translate(0, 0) scale(1); }
+  15% { transform: translate(-4px, -3px) scale(1.008); }
+  30% { transform: translate(4px, 3px) scale(1.006); }
+  45% { transform: translate(-3px, 2px) scale(1.004); }
+  60% { transform: translate(3px, -2px) scale(1.002); }
+  75% { transform: translate(-2px, 1px) scale(1.001); }
+  90% { transform: translate(1px, -1px) scale(1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes shakeCrit {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-5px, 4px); }
+  40% { transform: translate(5px, -3px); }
+  60% { transform: translate(-3px, 2px); }
+  80% { transform: translate(2px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.screen-shake-boss {
+  animation: shakeBoss 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.screen-shake-quest {
+  animation: shakeQuest 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.screen-shake-crit {
+  animation: shakeCrit 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Screen Flash & Aura Ray Animations */
+@keyframes shockwaveExpand {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes flashVignette {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes lightRaySpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes victoryBadgePop {
+  0% { transform: scale(0.4) translateY(30px); opacity: 0; }
+  40% { transform: scale(1.08) translateY(-5px); opacity: 1; }
+  60% { transform: scale(0.96) translateY(2px); }
+  80% { transform: scale(1.02) translateY(0); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.anim-shockwave {
+  animation: shockwaveExpand 0.85s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+.anim-flash-vignette {
+  animation: flashVignette 1.2s ease-out forwards;
+}
+
+.anim-light-rays {
+  animation: lightRaySpin 12s linear infinite;
+}
+
+.anim-victory-badge {
+  animation: victoryBadgePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Boss Card Damage & Defeat Impact */
+@keyframes bossDamageFlicker {
+  0% { filter: brightness(1) drop-shadow(0 0 0 rgba(239, 68, 68, 0)); transform: scale(1); }
+  25% { filter: brightness(1.7) drop-shadow(0 0 20px rgba(239, 68, 68, 0.8)); transform: scale(0.97); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 10px rgba(239, 68, 68, 0.5)); transform: scale(1.02); }
+  100% { filter: brightness(1) drop-shadow(0 0 0 rgba(239, 68, 68, 0)); transform: scale(1); }
+}
+
+.boss-damaged {
+  animation: bossDamageFlicker 0.4s ease-out;
+}

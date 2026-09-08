@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile and synced habit tracker data",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique Firebase Auth user ID"
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Profile picture avatar URL"
+        },
+        "data": {
+          "type": "string",
+          "description": "JSON serialized string of the entire user habit state (logs, habits, inventory, boss, quests, stats)"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last cloud sync"
+        }
+      },
+      "required": ["uid", "data", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User account document containing profile and synchronized game/habit state"
+    }
+  }
+}

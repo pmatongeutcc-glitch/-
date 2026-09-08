@@ -1,0 +1,6 @@
+{
+  "name": "Equilibrium Habit & Task Tracker",
+  "description": "แอพจัดการรายการสิ่งที่ต้องทำและปั้นนิสัยแบบเกม RPG พร้อมระบบเควสต์ บอส ตะลุยภารกิจ กราฟสรุปผลงาน ร้านค้ารางวัล โฟกัสไทม์เมอร์ และรองรับสั่งการด้วยเสียง",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
